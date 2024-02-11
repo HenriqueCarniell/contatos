@@ -1,0 +1,21 @@
+#criar-conta-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    border: 1px solid rgb(124, 124, 124);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#div-criar-conta-botao {
+    display: flex;
+    justify-content: center;
+}
+
+#criar-botao {
+    width: 100%;
+}

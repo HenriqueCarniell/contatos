@@ -1,0 +1,26 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    align-items: center;
+    background-color: rgb(36, 36, 36);
+}
+
+#logar {
+    color: white;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+#div-botao-add {
+    display: flex;
+    justify-content: end;
+    padding: 30px;
+}
