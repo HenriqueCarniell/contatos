@@ -9,8 +9,8 @@ exports.SendLogin = async (req, res) => {
 
     if (usuario) {
         let comparasenha = await bcrypt.compare(senhalogin, usuario.Senha);
+
         if (comparasenha) {
-            // Armazena informações do usuário na sessão
             req.session.user = { id: usuario.idUsuario };
             res.status(201).json({ msg: "Usuario Logado" });
         } else {
