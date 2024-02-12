@@ -7,41 +7,41 @@ exports.SendLogin = async (req,res) => {
     console.log(emaillogin,senhalogin);
 
     validaDadosEmBranco(emaillogin,senhalogin,res);
-    let usuario = await ValidaDadosLoginBancoDeDados(emaillogin,res)
+    let usuario = await ValidaDadosLoginBancoDeDados(emaillogin,res);
 
     if(usuario) {
-        let comparasenha = await bcrypt.compare(senhalogin, usuario.Senha)
+        let comparasenha = await bcrypt.compare(senhalogin, usuario.Senha);
         if(comparasenha) {
-            res.status(201).json({msg: "Usuario Logado"})
+            res.status(201).json({msg: "Usuario Logado"});
         } else {
-            res.status(404).json({msg: "Usuario não encontrado"})
+            res.status(404).json({msg: "Usuario não encontrado"});
         }
     }
 }
 
 let validaDadosEmBranco = (emaillogin, senhalogin,res) => {
     if(!emaillogin) {
-        res.status(404).json({msg: "Digite um email"})
+        res.status(404).json({msg: "Digite um email"});
     }
     if(!senhalogin) {
-        res.status(404).json({msg: "Digite uma senha"})
+        res.status(404).json({msg: "Digite uma senha"});
     }
 }
 
 let ValidaDadosLoginBancoDeDados = (emaillogin,res) => {
     return new Promise((resolve, reject) => {
-        const sql = "select * from usuario where email = ?"
+        const sql = "select * from usuario where email = ?";
 
         db.query(sql,[emaillogin], (err,result) => {
             if(err) {
-                reject(err)
-                console.log(err)
+                reject(err);
+                console.log(err);
             }
             if(result.length > 0) {
-                console.log(result[0])
-                resolve(result[0])
+                console.log(result[0]);
+                resolve(result[0]);
             } else {
-                resolve(false)
+                resolve(false);
             }
         })
     })
