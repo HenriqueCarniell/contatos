@@ -5,7 +5,9 @@ exports.Send = async (req, res) => {
     const { nome, email, senha } = req.body;
     console.log(nome,email,senha);
 
-    ValidaDadosEmBranco(nome, email, senha);
+    if (!ValidaDadosEmBranco(nome, email, senha, res)) {
+        return;
+    }
     let dadoBd = await ValidaDadosBancoDeDados(email,res);
 
     if(dadoBd === true) {

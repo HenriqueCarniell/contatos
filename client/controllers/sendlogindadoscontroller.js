@@ -1,11 +1,22 @@
 const db = require('../db/db');
+const bcrypt = require('bcrypt');
 
-exports.SendLogin = (req,res) => {
+exports.SendLogin = async (req,res) => {
     const {emaillogin,senhalogin} = req.body;
 
     console.log(emaillogin,senhalogin);
 
     validaDadosEmBranco(emaillogin,senhalogin,res);
+    let usuario = await ValidaDadosLoginBancoDeDados(emaillogin,res)
+
+    if(usuario) {
+        let comparasenha = await bcrypt.compare(senhalogin, usuario.Senha)
+        if(comparasenha) {
+            res.status(201).json({msg: "Usuario Logado"})
+        } else {
+            res.status(404).json({msg: "Usuario não encontrado"})
+        }
+    }
 }
 
 let validaDadosEmBranco = (emaillogin, senhalogin,res) => {
@@ -15,4 +26,23 @@ let validaDadosEmBranco = (emaillogin, senhalogin,res) => {
     if(!senhalogin) {
         res.status(404).json({msg: "Digite uma senha"})
     }
+}
+
+let ValidaDadosLoginBancoDeDados = (emaillogin,res) => {
+    return new Promise((resolve, reject) => {
+        const sql = "select * from usuario where email = ?"
+
+        db.query(sql,[emaillogin], (err,result) => {
+            if(err) {
+                reject(err)
+                console.log(err)
+            }
+            if(result.length > 0) {
+                console.log(result[0])
+                resolve(result[0])
+            } else {
+                resolve(false)
+            }
+        })
+    })
 }
