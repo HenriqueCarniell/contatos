@@ -3,7 +3,6 @@ const botao = document.getElementById('login-botao');
 
 // Funções
 
-
 // Eventos
 botao.addEventListener('click', (e) => {
     e.preventDefault();
@@ -25,10 +24,9 @@ let enviadados = (emaillogin,senhalogin) => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.msg);
+        console.log(data);
     })
     .catch((err) => {
         console.log(err)
     })
 }
-

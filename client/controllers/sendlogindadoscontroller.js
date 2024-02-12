@@ -1,48 +1,49 @@
 const db = require('../db/db');
 const bcrypt = require('bcrypt');
 
-exports.SendLogin = async (req,res) => {
-    const {emaillogin,senhalogin} = req.body;
+exports.SendLogin = async (req, res) => {
+    const { emaillogin, senhalogin } = req.body;
 
-    console.log(emaillogin,senhalogin);
+    validaDadosEmBranco(emaillogin, senhalogin, res);
+    let usuario = await ValidaDadosLoginBancoDeDados(emaillogin, res);
 
-    validaDadosEmBranco(emaillogin,senhalogin,res);
-    let usuario = await ValidaDadosLoginBancoDeDados(emaillogin,res);
-
-    if(usuario) {
+    if (usuario) {
         let comparasenha = await bcrypt.compare(senhalogin, usuario.Senha);
-        if(comparasenha) {
-            res.status(201).json({msg: "Usuario Logado"});
+        if (comparasenha) {
+            // Armazena informações do usuário na sessão
+            req.session.user = { id: usuario.idUsuario };
+            res.status(201).json({ msg: "Usuario Logado" });
         } else {
-            res.status(404).json({msg: "Usuario não encontrado"});
+            res.status(404).json({ msg: "Senha incorreta" });
         }
     }
+
 }
 
-let validaDadosEmBranco = (emaillogin, senhalogin,res) => {
-    if(!emaillogin) {
-        res.status(404).json({msg: "Digite um email"});
+let validaDadosEmBranco = (emaillogin, senhalogin, res) => {
+    if (!emaillogin) {
+        res.status(404).json({ msg: "Digite um email" });
     }
-    if(!senhalogin) {
-        res.status(404).json({msg: "Digite uma senha"});
+    if (!senhalogin) {
+        res.status(404).json({ msg: "Digite uma senha" });
     }
 }
 
-let ValidaDadosLoginBancoDeDados = (emaillogin,res) => {
+let ValidaDadosLoginBancoDeDados = (emaillogin, res) => {
     return new Promise((resolve, reject) => {
-        const sql = "select * from usuario where email = ?";
+        const sql = "SELECT * FROM usuario WHERE email = ?";
 
-        db.query(sql,[emaillogin], (err,result) => {
-            if(err) {
+        db.query(sql, [emaillogin], (err, result) => {
+            if (err) {
                 reject(err);
                 console.log(err);
             }
-            if(result.length > 0) {
-                console.log(result[0]);
+            if (result.length > 0) {
                 resolve(result[0]);
             } else {
                 resolve(false);
             }
-        })
-    })
-}
+        });
+    });
+};
+

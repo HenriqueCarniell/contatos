@@ -1,3 +1,3 @@
 exports.Perfil = (req,res) => {
-    res.sendFile('C:/Users/gusta/OneDrive/Documentos/contatos/src/html/perfil.html');
+    res.render('C:/Users/gusta/OneDrive/Documentos/contatos/src/html/perfil.html');
 }

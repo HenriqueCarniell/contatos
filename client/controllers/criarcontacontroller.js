@@ -1,3 +1,3 @@
 exports.CriarConta = (req,res) => {
-    res.sendFile('C:/Users/gusta/OneDrive/Documentos/contatos/src/html/criarconta.html');
+    res.render('C:/Users/gusta/OneDrive/Documentos/contatos/src/html/criarconta.html');
 }

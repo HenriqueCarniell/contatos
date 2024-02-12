@@ -1,3 +1,3 @@
 exports.Login = (req,res) => {
-    res.sendFile('C:/Users/gusta/OneDrive/Documentos/contatos/src/html/login.html');
+    res.render('C:/Users/gusta/OneDrive/Documentos/contatos/src/html/login.html');
 }
