@@ -1,0 +1,21 @@
+form {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#div-login-botao {
+    display: flex;
+    justify-content: center;
+}
+
+#login-botao {
+    width: 100%;
+}
