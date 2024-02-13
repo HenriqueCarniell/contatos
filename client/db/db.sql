@@ -34,4 +34,6 @@ create Table Contato_Usuario (
 
 SELECT * FROM usuario;
 SELECT * FROM tel_usuario;
+
+DELETE from contato_usuario;
 SELECT * FROM contato_usuario;
