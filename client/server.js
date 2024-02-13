@@ -9,7 +9,7 @@ app.use(session({
     secret: "ASDFSADFSDF39382070fh200fh092cnlznknsaASFASDF",
     resave: false,
     saveUninitialized: true
-}))
+}));
 app.engine('html',require('ejs').renderFile)
 app.set('view engine', 'html')
 app.use(cors());

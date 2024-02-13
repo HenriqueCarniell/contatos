@@ -8,12 +8,16 @@ const logincontroller = require('../controllers/logincontroller');
 const perfilcontroller = require('../controllers/perfilcontroller');
 const sendadoscontroller = require('../controllers/sendadoscontroller');
 const sendlogindadoscontroller = require('../controllers/sendlogindadoscontroller');
-const addcontroller = require('../controllers/addcontroller')
+const addcontroller = require('../controllers/addcontroller');
+const getcontrollers = require('../controllers/getcontrollers');
+const deletecontato = require('../controllers/deletecontato');
 
 //API
 Router.post('/send/dados', sendadoscontroller.Send);
 Router.post('/send/login/dados', sendlogindadoscontroller.SendLogin);
 Router.post('/send/add/contato', addcontroller.Add);
+Router.get('/get/dados/contatos', getcontrollers.Get);
+Router.delete('/delete/contato/:idContato', deletecontato.Delete)
 
 // Rotas
 Router.get('/home', homecontroller.Home);

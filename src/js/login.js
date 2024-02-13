@@ -24,7 +24,9 @@ let enviadados = (emaillogin,senhalogin) => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        if(data.msg) {
+            window.location.href = '/home'
+        }
     })
     .catch((err) => {
         console.log(err)

@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt')
 
 exports.Send = async (req, res) => {
     const { nome, email, senha } = req.body;
-    console.log(nome,email,senha);
 
     if (!ValidaDadosEmBranco(nome, email, senha, res)) {
         return;

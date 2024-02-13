@@ -24,3 +24,9 @@ a {
     justify-content: end;
     padding: 30px;
 }
+
+#Econtatos {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
