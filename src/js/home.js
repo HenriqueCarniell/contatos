@@ -1,6 +1,7 @@
 //Variaveis
 const botaoSalvar = document.getElementById('salvar-contato');
 const divContatos = document.getElementById('div-contatos');
+const logar = document.getElementById('logar');
 
 //Eventos
 botaoSalvar.addEventListener('click', () => {
@@ -18,7 +19,7 @@ botaoSalvar.addEventListener('click', () => {
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            if(data.msg) {
+            if (data.msg) {
                 window.location.reload()
             }
         })
@@ -28,11 +29,36 @@ botaoSalvar.addEventListener('click', () => {
 })
 
 fetch('/get/dados/contatos')
-    .then(response => response.json())
-    .then(data => {
-        colocaContato(data)
+    .then(response => {
+        if (!response.ok) {
+            throw response;
+        }
+        return response.json();
     })
+    .then(data => {
+        colocaContato(data);
+        mudafotologin(null, data.foto);
+    })
+    .catch(err => {
+        err.json().then(errorMessage => {
+            mudafotologin(errorMessage.msg, null);
+        });
+    });
+
 //Funções
+
+let mudafotologin = (msg, fotoUrl) => {
+    if (msg) {
+        logar.innerHTML = `
+            <a href="/login">Logar</a>
+        `
+    } else {
+        logar.innerHTML = `
+            <img src="${fotoUrl}">Foto</img>
+        `
+    }
+}
+
 
 let colocaContato = (data) => {
     for (var i = 0; i < data.length; i++) {

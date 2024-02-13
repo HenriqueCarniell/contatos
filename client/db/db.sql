@@ -12,6 +12,7 @@ create table usuario (
     Nome VARCHAR(30) NOT NULL,
     Email VARCHAR(30) NOT NULL,
     Senha VARCHAR(160) NOT NULL,
+    foto_perfil VARCHAR(1000),
     Data_Aniversario DATE
 );
 drop table Tel_Usuario;

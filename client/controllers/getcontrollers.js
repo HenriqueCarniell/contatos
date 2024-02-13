@@ -2,13 +2,14 @@ const db = require('../db/db');
 
 exports.Get = (req,res) => {
 
+    if(!req.session.user) {
+        res.status(404).json({msg: "Logue para ver seus contatos"});
+        return;
+    }
+
     const idUsuario = req.session.user.id;
 
     const sql = "select * from Contato_Usuario where fk_id_Usuario = ?";
-
-    if(!req.session.user) {
-        res.status(404).json({msg: "Logue para ver seus contatos"})
-    }
 
     db.query(sql, [idUsuario], (err,result) => {
         if(err) {
