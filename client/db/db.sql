@@ -13,14 +13,8 @@ create table usuario (
     Email VARCHAR(30) NOT NULL,
     Senha VARCHAR(160) NOT NULL,
     foto_perfil VARCHAR(1000),
-    Data_Aniversario DATE
-);
-drop table Tel_Usuario;
-create Table Tel_Usuario (
-    idTelefone int PRIMARY KEY AUTO_INCREMENT,
-    numero CHAR(13) NOT NULL,
-    fk_id_Usuario int NOT NULL,
-    FOREIGN KEY (fk_id_Usuario) REFERENCES usuario(idUsuario)
+    Data_Aniversario DATE,
+    numero_telefone CHAR(13)
 );
 
 drop table contato_usuario;
@@ -34,7 +28,5 @@ create Table Contato_Usuario (
 );
 
 SELECT * FROM usuario;
-SELECT * FROM tel_usuario;
-
 DELETE from contato_usuario;
 SELECT * FROM contato_usuario;

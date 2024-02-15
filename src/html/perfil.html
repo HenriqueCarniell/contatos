@@ -29,15 +29,11 @@
                 <form id="form-perfil">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nome:</label>
-                        <input type="email" class="form-control" id="novoNome" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="novoNome" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="novoEmail" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="novaSenha">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Telefone</label>
@@ -45,9 +41,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Foto</label>
-                        <input type="tel" class="form-control" id="novaFoto">
+                        <input type="text" class="form-control" id="novaFoto">
                     </div>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Data de Aniversario: </label>
+                        <input type="date" class="form-control" id="novaData">
+                    </div>
+                    <button class="btn btn-primary" id="salvar-dados">Salvar</button>
                 </form>
             </div>
         </main>

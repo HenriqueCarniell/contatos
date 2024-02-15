@@ -1,15 +1,28 @@
-fetch('/get/dados/contatos')
-    .then(response => response.json())
-        .then(user => {
-            colocadados(user)
-        })
+let salvarDados = document.getElementById('salvar-dados');
 
-let colocadados = (user) => {
-    for(var i = 0; i < user.length; i++) {
-        document.getElementById('novoNome').value = user[i].nome
-        document.getElementById('novoEmail').value = user[i].email
-        document.getElementById('novaSenha').value = user[i].senha
-        // document.getElementById('novoTelefone').value = user[i].email
-        // document.getElementById('novaFoto').value = user[i].email
-    }
-}
+salvarDados.addEventListener('click', () => {
+    let novoNome = document.getElementById('novoNome').value;
+    let novoEmail = document.getElementById('novoEmail').value;
+    let novoTelefone = document.getElementById('novoTelefone').value;
+    let novaFoto = document.getElementById('novaFoto').value;
+    let novaDataAniversario = document.getElementById('novaData').value;
+
+    fetch('/send/novos/dados', {
+        method: 'PUT', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            nome: novoNome,
+            email: novoEmail,
+            telefone: novoTelefone,
+            foto: novaFoto,
+            data: novaDataAniversario
+        })
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+});
