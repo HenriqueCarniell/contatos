@@ -2,6 +2,9 @@
 const botaoSalvar = document.getElementById('salvar-contato');
 const divContatos = document.getElementById('div-contatos');
 const logar = document.getElementById('logar');
+const divPerfil = document.getElementById('div-perfil')
+
+let change = false;
 
 //Eventos
 botaoSalvar.addEventListener('click', () => {
@@ -28,6 +31,16 @@ botaoSalvar.addEventListener('click', () => {
         })
 })
 
+logar.addEventListener('click', () => {
+    change = !change;
+    
+    if(change) {
+        divPerfil.style.display = 'none'
+    } else {
+        divPerfil.style.display = 'block'
+    }
+});
+
 fetch('/get/dados/contatos')
     .then(response => {
         if (!response.ok) {
@@ -42,19 +55,20 @@ fetch('/get/dados/contatos')
     .catch(err => {
         err.json().then(errorMessage => {
             mudafotologin(errorMessage.msg, null);
+            console.log(errorMessage.msg)
         });
     });
 
 //Funções
 
 let mudafotologin = (msg, fotoUrl) => {
-    if (msg) {
+    if (msg === "Logue para ver seus contatos") {
         logar.innerHTML = `
             <a href="/login">Logar</a>
         `
     } else {
         logar.innerHTML = `
-            <img src="${fotoUrl}">Foto</img>
+            <img id="foto-perfil" src="${fotoUrl}">Foto</img>
         `
     }
 }
