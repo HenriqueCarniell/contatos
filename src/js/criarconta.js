@@ -1,5 +1,6 @@
 // Variaveis
 const botao = document.getElementById('criar-botao');
+const emailMsg = document.getElementById('emailMsg');
 
 // Funções
 
@@ -27,6 +28,13 @@ let enviadados = (nome,email,senha) => {
     .then(response => response.json())
     .then(data => {
         console.log(data.msg);
+        if(data.msg === "Conta Cadastrada com sucesso") {
+            window.location.href = '/login'
+        } else {
+            emailMsg.innerHTML = `
+            <p>${data.msg}</p>
+            `
+        }
     })
     .catch((err) => {
         console.log(err)

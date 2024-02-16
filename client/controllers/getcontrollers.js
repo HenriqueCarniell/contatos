@@ -2,7 +2,7 @@ const db = require('../db/db');
 
 exports.Get = (req,res) => {
 
-    if(!req.session.user) {
+    if(!req.session || !req.session.user) {
         res.status(404).json({msg: "Logue para ver seus contatos"});
         return;
     }
@@ -13,7 +13,7 @@ exports.Get = (req,res) => {
 
     db.query(sql, [idUsuario], (err,result) => {
         if(err) {
-            console.log(err)
+            console.log(err);
             res.status(500).json({msg: "Erro ao buscar contatos"});
         }
         if(result.length > 0) {
@@ -21,5 +21,5 @@ exports.Get = (req,res) => {
         } else {
             res.status(404).json({msg: "Nenhum contato encontrado"});
         }
-    })
+    });
 }

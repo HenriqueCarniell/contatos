@@ -1,4 +1,5 @@
 let salvarDados = document.getElementById('salvar-dados');
+let fotoDePerfil = document.getElementById('foto-de-perfil')
 
 salvarDados.addEventListener('click', () => {
     let novoNome = document.getElementById('novoNome').value;
@@ -26,3 +27,21 @@ salvarDados.addEventListener('click', () => {
             console.error('Error:', error);
         });
 });
+
+fetch('/get/dados/user')
+    .then(response => response.json())
+    .then(user => {
+        colocaFotoPerifl(user);
+    })
+
+    let colocaFotoPerifl = (user) => {
+        if(user && user.foto_perfil) {
+            fotoDePerfil.innerHTML = `
+            <img src="${user.foto_perfil}"></img>
+            `
+        } else {
+            fotoDePerfil.innerHTML = `
+            <img src="https://i.pinimg.com/550x/fd/b0/50/fdb050d4b24a2d0afacbf934113b0112.jpg"></img>
+            `
+        }
+    }    

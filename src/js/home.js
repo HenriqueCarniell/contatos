@@ -50,7 +50,6 @@ fetch('/get/dados/contatos')
     })
     .then(data => {
         colocaContato(data);
-        mudafotologin(null, data.foto);
     })
     .catch(err => {
         err.json().then(errorMessage => {
@@ -59,16 +58,22 @@ fetch('/get/dados/contatos')
         });
     });
 
+    fetch('/get/dados/user')
+    .then(response => response.json())
+    .then(user => {
+        mudafotologin(null, user);
+    })
+
 //Funções
 
-let mudafotologin = (msg, fotoUrl) => {
+let mudafotologin = (msg, user) => {
     if (msg === "Logue para ver seus contatos") {
         logar.innerHTML = `
             <a href="/login">Logar</a>
         `
     } else {
         logar.innerHTML = `
-            <img id="foto-perfil" src="${fotoUrl}">Foto</img>
+            <img id="foto-perfil" src="${user.foto_perfil}"></img>
         `
     }
 }
@@ -101,4 +106,3 @@ let ExcluirContato = (idContato) => {
                 })
         })
 }
-

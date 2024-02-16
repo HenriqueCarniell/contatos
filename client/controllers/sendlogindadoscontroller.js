@@ -17,7 +17,6 @@ exports.SendLogin = async (req, res) => {
             res.status(404).json({ msg: "Senha incorreta" });
         }
     }
-
 }
 
 let validaDadosEmBranco = (emaillogin, senhalogin, res) => {
