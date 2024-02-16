@@ -28,5 +28,6 @@ create Table Contato_Usuario (
 );
 
 SELECT * FROM usuario;
-DELETE from contato_usuario;
+DELETE from usuario;
+DELETE from Contato_Usuario;
 SELECT * FROM contato_usuario;

@@ -32,7 +32,16 @@ fetch('/get/dados/user')
     .then(response => response.json())
     .then(user => {
         colocaFotoPerifl(user);
+        colocardadosinput(user)
     })
+
+    let colocardadosinput = (user) => {
+        document.getElementById('novoNome').value = user.Nome;
+        document.getElementById('novoEmail').value = user.Email;
+        document.getElementById('novoTelefone').value = user.numero_telefone;
+        document.getElementById('novaFoto').value = user.foto_perfil;
+    
+    }
 
     let colocaFotoPerifl = (user) => {
         if(user && user.foto_perfil) {

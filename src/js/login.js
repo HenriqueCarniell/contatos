@@ -24,7 +24,7 @@ let enviadados = (emaillogin,senhalogin) => {
     })
     .then(response => response.json())
     .then(data => {
-        if(data.msg) {
+        if(data.msg === "Usuario Logado") {
             window.location.href = '/home'
         }
     })

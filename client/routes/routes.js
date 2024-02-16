@@ -2,14 +2,14 @@ const express = require('express');
 const Router = express();
 
 //Controllers
-const homecontroller = require('../controllers/homecontroller');
-const criarcontacontroller = require('../controllers/criarcontacontroller');
-const logincontroller = require('../controllers/logincontroller');
-const perfilcontroller = require('../controllers/perfilcontroller');
-const sendadoscontroller = require('../controllers/sendadoscontroller');
-const sendlogindadoscontroller = require('../controllers/sendlogindadoscontroller');
+const homecontroller = require('../controllers/homepagina');
+const criarcontacontroller = require('../controllers/criarcontapagina');
+const logincontroller = require('../controllers/loginpagina');
+const perfilcontroller = require('../controllers/perfilpagina');
+const sendadoscontroller = require('../controllers/registrausuario');
+const sendlogindadoscontroller = require('../controllers/loginusuario');
 const addcontroller = require('../controllers/addcontroller');
-const getcontrollers = require('../controllers/getcontrollers');
+const getcontrollers = require('../controllers/getcontatos');
 const deletecontato = require('../controllers/deletecontato');
 const novosdadoscontroller = require('../controllers/novosdados');
 const getdadosuser = require('../controllers/getdadosuser')
