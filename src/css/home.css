@@ -46,7 +46,7 @@ a {
 
 #div-perfil p {
     display: grid;
-    height: 1.5rem;
+    height: 2rem;
     color: white;
 }
 
@@ -54,8 +54,21 @@ a {
     height: 75px;
     border-radius: 100%;
     width: 75px;
+    cursor: pointer;
+}
+
+#contatos-foto {
+    cursor: pointer;
+}
+
+#contatos-foto a {
+    color: white;
 }
 
 #div-logo a {
     color: white;
+}
+
+#sairDasessao {
+    cursor: pointer;
 }

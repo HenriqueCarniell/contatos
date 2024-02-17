@@ -6,7 +6,7 @@ const divPerfil = document.getElementById('div-perfil');
 
 const sairDasessao = document.getElementById('sairDasessao')
 
-let change = false;
+let change = true;
 
 //Eventos
 botaoSalvar.addEventListener('click', () => {
