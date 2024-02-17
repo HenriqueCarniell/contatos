@@ -12,16 +12,18 @@ const addcontroller = require('../controllers/addcontroller');
 const getcontrollers = require('../controllers/getcontatos');
 const deletecontato = require('../controllers/deletecontato');
 const novosdadoscontroller = require('../controllers/novosdados');
-const getdadosuser = require('../controllers/getdadosuser')
+const getdadosuser = require('../controllers/getdadosuser');
+const novosdadoscontato = require('../controllers/novosdadoscontato')
 
 //API
 Router.post('/send/dados', sendadoscontroller.Send);
 Router.post('/send/login/dados', sendlogindadoscontroller.SendLogin);
 Router.post('/send/add/contato', addcontroller.Add);
 Router.get('/get/dados/contatos', getcontrollers.Get);
-Router.delete('/delete/contato/:idContato', deletecontato.Delete)
-Router.put('/send/novos/dados', novosdadoscontroller.novo)
-Router.get('/get/dados/user', getdadosuser.getUser)
+Router.delete('/delete/contato/:idContato', deletecontato.Delete);
+Router.put('/send/novos/dados', novosdadoscontroller.novo);
+Router.get('/get/dados/user', getdadosuser.getUser);
+Router.put('/change/contato/:idcontato', novosdadoscontato.novo)
 
 // Rotas
 Router.get('/home', homecontroller.Home);

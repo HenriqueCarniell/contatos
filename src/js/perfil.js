@@ -40,6 +40,7 @@ fetch('/get/dados/user')
         document.getElementById('novoEmail').value = user.Email;
         document.getElementById('novoTelefone').value = user.numero_telefone;
         document.getElementById('novaFoto').value = user.foto_perfil;
+        document.getElementById('novaData').value = user.Data_Aniversario;
     
     }
 

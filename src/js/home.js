@@ -2,7 +2,7 @@
 const botaoSalvar = document.getElementById('salvar-contato');
 const divContatos = document.getElementById('div-contatos');
 const logar = document.getElementById('logar');
-const divPerfil = document.getElementById('div-perfil')
+const divPerfil = document.getElementById('div-perfil');
 
 let change = false;
 
@@ -33,8 +33,8 @@ botaoSalvar.addEventListener('click', () => {
 
 logar.addEventListener('click', () => {
     change = !change;
-    
-    if(change) {
+
+    if (change) {
         divPerfil.style.display = 'none'
     } else {
         divPerfil.style.display = 'block'
@@ -58,7 +58,7 @@ fetch('/get/dados/contatos')
         });
     });
 
-    fetch('/get/dados/user')
+fetch('/get/dados/user')
     .then(response => response.json())
     .then(user => {
         mudafotologin(null, user);
@@ -82,13 +82,46 @@ let mudafotologin = (msg, user) => {
 let colocaContato = (data) => {
     for (var i = 0; i < data.length; i++) {
         divContatos.innerHTML += `
-        <div id="Econtatos">
-            <h4>Nome: ${data[i].nome}</h4>
-            <h4>Email: ${data[i].email}</h4>
-            <h4>Telefone: ${data[i].telefone}</h4>
-            <button onclick="ExcluirContato(${data[i].idContato})">Excluir</button>
-            <button>Alterar</button>
-        </div>
+            <div id="Econtatos">
+                <h4>Nome: ${data[i].nome}</h4>
+                <h4>Email: ${data[i].email}</h4>
+                <h4>Telefone: ${data[i].telefone}</h4>
+                <button onclick="ExcluirContato(${data[i].idContato})">Excluir</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2${data[i].idContato}">Alterar</button>
+
+                <!--Modal -->
+                <div class="modal fade" id="exampleModal2${data[i].idContato}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="nomenovocontato${data[i].idContato}"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control" id="telefonenovocontato${data[i].idContato}"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="emailnovocontato${data[i].idContato}"
+                                        aria-describedby="emailHelp">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button onclick="AlterarContato(${data[i].idContato})" type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div >
         `
     }
 }
@@ -105,4 +138,23 @@ let ExcluirContato = (idContato) => {
                     colocaContato(data)
                 })
         })
+}
+
+let AlterarContato = (idContato) => {
+    const nomenovocontato = document.getElementById('nomenovocontato' + idContato).value;
+    const telefonenovocontato = document.getElementById('telefonenovocontato' + idContato).value;
+    const emailnovocontato = document.getElementById('emailnovocontato' + idContato).value;
+
+    fetch(`/change/contato/${idContato}`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'Application/json'
+        },
+        body: JSON.stringify({
+            novoNome: nomenovocontato,
+            novoTelefone: telefonenovocontato,
+            novoEmail: emailnovocontato
+        })
+    })
+    window.location.reload();
 }

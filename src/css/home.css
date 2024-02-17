@@ -55,3 +55,7 @@ a {
     border-radius: 100%;
     width: 75px;
 }
+
+#div-logo a {
+    color: white;
+}
