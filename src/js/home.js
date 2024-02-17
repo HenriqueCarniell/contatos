@@ -56,7 +56,7 @@ fetch('/get/dados/contatos')
     .catch(err => {
         err.json().then(errorMessage => {
             mudafotologin(errorMessage.msg, null);
-            console.log(errorMessage.msg)
+            console.log(errorMessage.msg);
         });
     });
 
@@ -66,14 +66,14 @@ fetch('/get/dados/user')
         mudafotologin(null, user);
     })
 
-    sairDasessao.addEventListener('click', () => {
-        fetch('/logout', {
-            method: 'POST'
-        })
+sairDasessao.addEventListener('click', () => {
+    fetch('/logout', {
+        method: 'POST'
+    })
         .then(() => {
             window.location.href = '/login'
         })
-    })
+})
 
 //Funções
 
