@@ -97,8 +97,8 @@ let colocaContato = (data) => {
                 <h4>Nome: ${data[i].nome}</h4>
                 <h4>Email: ${data[i].email}</h4>
                 <h4>Telefone: ${data[i].telefone}</h4>
-                <button onclick="ExcluirContato(${data[i].idContato})">Excluir</button>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2${data[i].idContato}">Alterar</button>
+                <button onclick="ExcluirContato(${data[i].idContato})" class="btn btn-danger">Excluir</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2${data[i].idContato}" class="btn btn-dark">Alterar</button>
 
                 <!--Modal -->
                 <div class="modal fade" id="exampleModal2${data[i].idContato}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -127,7 +127,7 @@ let colocaContato = (data) => {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button onclick="AlterarContato(${data[i].idContato})" type="button" class="btn btn-primary">Save changes</button>
+                                <button onclick="AlterarContato(${data[i].idContato})" type="button" class="btn btn-dark">Save changes</button>
                             </div>
                         </div>
                     </div>
