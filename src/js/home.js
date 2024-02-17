@@ -4,6 +4,8 @@ const divContatos = document.getElementById('div-contatos');
 const logar = document.getElementById('logar');
 const divPerfil = document.getElementById('div-perfil');
 
+const sairDasessao = document.getElementById('sairDasessao')
+
 let change = false;
 
 //Eventos
@@ -158,3 +160,12 @@ let AlterarContato = (idContato) => {
     })
     window.location.reload();
 }
+
+sairDasessao.addEventListener('click', () => {
+    fetch('/logout', {
+        method: 'POST'
+    })
+    .then(() => {
+        window.location.href = '/login'
+    })
+})

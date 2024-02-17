@@ -13,7 +13,8 @@ const getcontrollers = require('../controllers/getcontatos');
 const deletecontato = require('../controllers/deletecontato');
 const novosdadoscontroller = require('../controllers/novosdados');
 const getdadosuser = require('../controllers/getdadosuser');
-const novosdadoscontato = require('../controllers/novosdadoscontato')
+const novosdadoscontato = require('../controllers/novosdadoscontato');
+const logoutsessao = require('../controllers/logoutsessao')
 
 //API
 Router.post('/send/dados', sendadoscontroller.Send);
@@ -23,7 +24,8 @@ Router.get('/get/dados/contatos', getcontrollers.Get);
 Router.delete('/delete/contato/:idContato', deletecontato.Delete);
 Router.put('/send/novos/dados', novosdadoscontroller.novo);
 Router.get('/get/dados/user', getdadosuser.getUser);
-Router.put('/change/contato/:idcontato', novosdadoscontato.novo)
+Router.put('/change/contato/:idcontato', novosdadoscontato.novo);
+Router.post('/logout', logoutsessao.logout),
 
 // Rotas
 Router.get('/home', homecontroller.Home);
