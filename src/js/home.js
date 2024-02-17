@@ -66,6 +66,15 @@ fetch('/get/dados/user')
         mudafotologin(null, user);
     })
 
+    sairDasessao.addEventListener('click', () => {
+        fetch('/logout', {
+            method: 'POST'
+        })
+        .then(() => {
+            window.location.href = '/login'
+        })
+    })
+
 //Funções
 
 let mudafotologin = (msg, user) => {
@@ -160,12 +169,3 @@ let AlterarContato = (idContato) => {
     })
     window.location.reload();
 }
-
-sairDasessao.addEventListener('click', () => {
-    fetch('/logout', {
-        method: 'POST'
-    })
-    .then(() => {
-        window.location.href = '/login'
-    })
-})
