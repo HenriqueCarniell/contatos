@@ -1,5 +1,10 @@
 let salvarDados = document.getElementById('salvar-dados');
 let fotoDePerfil = document.getElementById('foto-de-perfil')
+let logar = document.getElementById('logar');
+let divPerfil = document.getElementById('div-perfil');
+let sairDasessao = document.getElementById('sairDasessao');
+
+let change = true;
 
 salvarDados.addEventListener('click', () => {
     let novoNome = document.getElementById('novoNome').value;
@@ -33,7 +38,35 @@ fetch('/get/dados/user')
     .then(user => {
         colocaFotoPerifl(user);
         colocardadosinput(user)
+        mudafotologin(null,user)
+        console.log(user)
+    }).catch((err) => {
+        console.log(err)
+        mudafotologin(err.msg,null)
     })
+
+    logar.addEventListener('click', () => {
+        change = !change;
+    
+        if (change) {
+            divPerfil.style.display = 'none'
+        } else {
+            divPerfil.style.display = 'block'
+        }
+    });
+
+
+    let mudafotologin = (msg, user) => {
+        if (msg === "Logue para ver seus contatos") {
+            logar.innerHTML = `
+                <a href="/login">Logar</a>
+            `
+        } else {
+            logar.innerHTML = `
+                <img id="foto-perfil" src="${user.foto_perfil}"></img>
+            `
+        }
+    }
 
     let colocardadosinput = (user) => {
         document.getElementById('novoNome').value = user.Nome;
@@ -43,6 +76,15 @@ fetch('/get/dados/user')
         document.getElementById('novaData').value = user.Data_Aniversario;
     
     }
+
+    sairDasessao.addEventListener('click', () => {
+        fetch('/logout', {
+            method: 'POST'
+        })
+            .then(() => {
+                window.location.href = '/login'
+            })
+    })
 
     let colocaFotoPerifl = (user) => {
         if(user && user.foto_perfil) {

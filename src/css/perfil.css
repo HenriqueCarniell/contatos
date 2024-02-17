@@ -1,3 +1,61 @@
+#header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 30px 100px;
+    align-items: center;
+    background-color: rgb(36, 36, 36);
+    z-index: 1;
+    position: relative;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+#div-perfil {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    background-color: #001214;
+    padding: 10px;
+    width: 8rem;
+    border-radius: 8px;
+}
+
+#div-perfil p {
+    display: grid;
+    height: 2rem;
+    color: white;
+}
+
+#foto-perfil {
+    height: 75px;
+    border-radius: 100%;
+    width: 75px;
+    cursor: pointer;
+}
+
+#contatos-foto {
+    cursor: pointer;
+}
+
+#contatos-foto a {
+    color: white;
+}
+
+#div-logo a {
+    color: white;
+}
+
+#sairDasessao {
+    cursor: pointer;
+}
+
+#logar {
+    color: white;
+}
+
 #form-perfil {
     width: 95%;
 }
