@@ -14,7 +14,7 @@ const deletecontato = require('../controllers/deletecontato');
 const novosdadoscontroller = require('../controllers/novosdados');
 const getdadosuser = require('../controllers/getdadosuser');
 const novosdadoscontato = require('../controllers/novosdadoscontato');
-const logoutsessao = require('../controllers/logoutsessao')
+const logoutsessao = require('../controllers/logoutsessao');
 
 //API
 Router.post('/send/dados', sendadoscontroller.Send);

@@ -10,7 +10,7 @@ exports.Delete = (req, res) => {
             console.log(err)
         }
         if (result) {
-            res.status(201).json({ msg: "Contatos Deletado com sucesso" })
+            res.status(201).json({ msg: "Contatos Deletado com sucesso" });
         }
     })
 }

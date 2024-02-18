@@ -4,8 +4,10 @@ const divContatos = document.getElementById('div-contatos');
 const logar = document.getElementById('logar');
 const divPerfil = document.getElementById('div-perfil');
 
+// botão para sair da sessão 
 const sairDasessao = document.getElementById('sairDasessao');
 
+// Variavel que muda para abrir e fechar modal
 let change = true;
 
 //Eventos
@@ -41,7 +43,7 @@ logar.addEventListener('click', () => {
     } else {
         divPerfil.style.display = 'block'
     }
-});
+})
 
 fetch('/get/dados/contatos')
     .then(response => {
@@ -57,8 +59,8 @@ fetch('/get/dados/contatos')
         err.json().then(errorMessage => {
             mudafotologin(errorMessage.msg, null);
             console.log(errorMessage.msg);
-        });
-    });
+        })
+    })
 
 fetch('/get/dados/user')
     .then(response => response.json())
@@ -77,6 +79,7 @@ sairDasessao.addEventListener('click', () => {
 
 //Funções
 
+// Muda o elemento se a pessoa estiver logado ou não
 let mudafotologin = (msg, user) => {
     if (msg === "Logue para ver seus contatos") {
         logar.innerHTML = `
@@ -89,7 +92,7 @@ let mudafotologin = (msg, user) => {
     }
 }
 
-
+// Insere os contatos na tela
 let colocaContato = (data) => {
     for (var i = 0; i < data.length; i++) {
         divContatos.innerHTML += `
@@ -137,6 +140,7 @@ let colocaContato = (data) => {
     }
 }
 
+//Excluir o contato da rota home
 let ExcluirContato = (idContato) => {
     fetch(`/delete/contato/${idContato}`, {
         method: 'DELETE',
@@ -151,6 +155,7 @@ let ExcluirContato = (idContato) => {
         })
 }
 
+// função para alterar dados dos contatos salvos
 let AlterarContato = (idContato) => {
     const nomenovocontato = document.getElementById('nomenovocontato' + idContato).value;
     const telefonenovocontato = document.getElementById('telefonenovocontato' + idContato).value;

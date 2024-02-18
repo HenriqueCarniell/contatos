@@ -24,7 +24,7 @@ let Validacao = (nomecontato, telefonecontato, emailcontato, idUsuario, res) => 
 
 let inserircontatoDB = (nomecontato, telefonecontato, emailcontato, idUsuario, res) => {
     const sql = "insert into Contato_Usuario(nome,email,telefone,fk_id_Usuario) values(?,?,?,?)";
-    
+
     db.query(sql, [nomecontato, emailcontato, telefonecontato, idUsuario], (err, result) => {
         if (err) {
             console.log(err);
@@ -32,5 +32,5 @@ let inserircontatoDB = (nomecontato, telefonecontato, emailcontato, idUsuario, r
         } else {
             res.status(200).json({ msg: "Contato inserido com sucesso" });
         }
-    });
+    })
 }

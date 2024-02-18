@@ -42,7 +42,7 @@ let ValidaDadosLoginBancoDeDados = (emaillogin, res) => {
             } else {
                 resolve(false);
             }
-        });
-    });
-};
+        })
+    })
+}
 

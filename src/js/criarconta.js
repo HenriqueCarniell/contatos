@@ -2,9 +2,6 @@
 const botao = document.getElementById('criar-botao');
 const emailMsg = document.getElementById('emailMsg');
 
-// Funções
-
-
 // Eventos
 botao.addEventListener('click', (e) => {
     e.preventDefault();
@@ -13,31 +10,31 @@ botao.addEventListener('click', (e) => {
     let email = document.getElementById('input-email').value;
     let senha = document.getElementById('input-senha').value;
 
-    enviadados(nome,email,senha);
+    enviadados(nome, email, senha);
 })
 
 //Chamadas de API
-let enviadados = (nome,email,senha) => {
+let enviadados = (nome, email, senha) => {
     fetch('/send/dados', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({nome,email,senha})
+        body: JSON.stringify({ nome, email, senha })
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.msg);
-        if(data.msg === "Conta Cadastrada com sucesso") {
-            window.location.href = '/login'
-        } else {
-            emailMsg.innerHTML = `
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.msg);
+            if (data.msg === "Conta Cadastrada com sucesso") {
+                window.location.href = '/login'
+            } else {
+                emailMsg.innerHTML = `
             <p>${data.msg}</p>
             `
-        }
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+            }
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 }
 
