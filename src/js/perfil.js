@@ -16,6 +16,12 @@ salvarDados.addEventListener('click', () => {
     let novaFoto = document.getElementById('novaFoto').value;
     let novaDataAniversario = document.getElementById('novaData').value;
 
+    let novaDataAniversarioNulo = novaDataAniversario;
+
+    if(novaDataAniversario === '') {
+        novaDataAniversarioNulo = null;
+    }
+
     fetch('/send/novos/dados', {
         method: 'PUT',
         headers: {
@@ -26,7 +32,7 @@ salvarDados.addEventListener('click', () => {
             email: novoEmail,
             telefone: novoTelefone,
             foto: novaFoto,
-            data: novaDataAniversario
+            data: novaDataAniversarioNulo
         })
     })
         .then(response => response.json())
