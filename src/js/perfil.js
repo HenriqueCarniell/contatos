@@ -66,7 +66,7 @@ let mudafotologin = (msg, user) => {
             `
     } else {
         logar.innerHTML = `
-                <img id="foto-perfil" src="${user.foto_perfil}"></img>
+        <img id="foto-perfil" src="${user.foto_perfil ? user.foto_perfil : "https://i.pinimg.com/550x/fd/b0/50/fdb050d4b24a2d0afacbf934113b0112.jpg"}"></img>
             `
     }
 }

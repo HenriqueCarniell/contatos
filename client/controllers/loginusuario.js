@@ -14,7 +14,7 @@ exports.SendLogin = async (req, res) => {
             req.session.user = { id: usuario.idUsuario };
             res.status(201).json({ msg: "Usuario Logado" });
         } else {
-            res.status(404).json({ msg: "Senha incorreta" });
+            res.status(404).json({ msg: "Email ou Senha incorretos" });
         }
     }
 }

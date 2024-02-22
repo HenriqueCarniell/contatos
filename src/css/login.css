@@ -4,11 +4,15 @@ form {
     border-radius: 8px;
 }
 
-#login-form {
+#div-login-form {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+#login-form {
+    width: 25rem;
 }
 
 #div-login-botao {
@@ -18,4 +22,8 @@ form {
 
 #login-botao {
     width: 100%;
+}
+
+#email-senha-incorreta {
+    color: red;
 }

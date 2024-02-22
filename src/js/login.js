@@ -1,5 +1,6 @@
 // Variaveis
 const botao = document.getElementById('login-botao');
+const emailHelp = document.getElementById('emailHelp')
 
 // Eventos
 botao.addEventListener('click', (e) => {
@@ -10,6 +11,7 @@ botao.addEventListener('click', (e) => {
 
     enviadados(email, senha);
 })
+
 
 //Chamadas de API
 let enviadados = (emaillogin, senhalogin) => {
@@ -25,8 +27,17 @@ let enviadados = (emaillogin, senhalogin) => {
             if (data.msg === "Usuario Logado") {
                 window.location.href = '/home'
             }
+            if (data.msg === "Email ou Senha incorretos") {
+                LoginNaoEncontrado(data.msg);
+            }
         })
         .catch((err) => {
-            console.log(err)
+            console.log(err);
         })
+}
+
+let LoginNaoEncontrado = (msg) => {
+    emailHelp.innerHTML += `
+    <p id="email-senha-incorreta">${msg}</p>
+    `
 }

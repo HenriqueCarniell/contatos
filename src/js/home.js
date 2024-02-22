@@ -87,7 +87,7 @@ let mudafotologin = (msg, user) => {
         `
     } else {
         logar.innerHTML = `
-            <img id="foto-perfil" src="${user.foto_perfil}"></img>
+            <img id="foto-perfil" src="${user.foto_perfil ? user.foto_perfil : "https://i.pinimg.com/550x/fd/b0/50/fdb050d4b24a2d0afacbf934113b0112.jpg"}"></img>
         `
     }
 }
@@ -100,8 +100,8 @@ let colocaContato = (data) => {
                 <h4>Nome: ${data[i].nome}</h4>
                 <h4>Email: ${data[i].email}</h4>
                 <h4>Telefone: ${data[i].telefone}</h4>
-                <button onclick="ExcluirContato(${data[i].idContato})" class="btn btn-danger">Excluir</button>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2${data[i].idContato}" class="btn btn-dark">Alterar</button>
+                <button id="PrimeiroBotaoHome" onclick="ExcluirContato(${data[i].idContato})" class="btn btn-danger">Excluir</button>
+                <button id="SegundoBotaoHome" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2${data[i].idContato}" class="btn btn-dark">Alterar</button>
 
                 <!--Modal -->
                 <div class="modal fade" id="exampleModal2${data[i].idContato}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,7 +135,7 @@ let colocaContato = (data) => {
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
         `
     }
 }

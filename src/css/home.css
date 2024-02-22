@@ -26,13 +26,16 @@ a {
 #div-botao-add {
     display: flex;
     justify-content: end;
-    padding: 30px;
+    padding: 50px;
 }
 
 #Econtatos {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+    display: grid;
+    width: 25rem;
+    border: 1px solid rgba(212, 212, 212, 0.795);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 2rem;
 }
 
 #div-perfil {
@@ -72,4 +75,16 @@ a {
 
 #sairDasessao {
     cursor: pointer;
+}
+
+#PrimeiroBotaoHome {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#div-contatos {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
